@@ -1,10 +1,11 @@
 START PROJECT:
+<br />
 master : docker-compose up -d nginx
 lighttpd : docker-compose up -d lighttpd
 lighttpdwithalpine : docker-compose up -d 
-
+<br />
 GENERAL COMMANDS 
-
+<br />
 docker-compose up -d nginx mysql
 
 docker exec -it test\_php-fpm\_1 /bin/bash
@@ -64,9 +65,9 @@ COLLATE utf8\_general\_ci;
 WHIRESHARK filter: ip.addr == 127.0.0.1
 
 COMMANDS CONNECT TO CONTAINER OR TO ENTER SHELL ALPINE
-
+<br />
 RUN /bin/ash FOR Alpine
-
+<br />
 Options used above:
 
 /bin/ash is Ash (Almquist Shell) provided by BusyBox
@@ -80,6 +81,7 @@ Info :https://en.wikipedia.org/wiki/Almquist\_shell
 
 
 AFTER INTSTAL nano
+<br />
 Run comand : export TERM=xterm
 
 LINK IMPORTANT
