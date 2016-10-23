@@ -3,7 +3,7 @@ COMMAND MAIN TO RUN APP
 docker-compose up -d nginx mysql
 
 COMMANDS CONNECT TO CONTAINER OR TO ENTER SHELL
-docker exec -it test_php-fpm_1   /bin/bash
+docker exec -it test_php-fpm_1   /bin/ash
 docker exec -it test_lighttpd_1   /bin/bash
 docker exec -it test_nginx_1   /bin/bash
 docker exec -it test_mysql_1   /bin/bash

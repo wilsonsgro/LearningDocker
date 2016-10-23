@@ -2,7 +2,6 @@ FROM alastairhm/alpine-lighttpd:latest
 MAINTAINER Alastair Montgomery <alastair@montgomery.me.uk>
 
 ARG PHP_UPSTREAM=php-fpm
-
 RUN apk update && \
     apk upgrade && \
     apk add --update bind && \
@@ -15,12 +14,12 @@ RUN apk update && \
 
 
 ADD lighttpd.conf /etc/lighttpd/lighttpd.conf
-COPY sites/*.conf /etc/lighttpd/conf-enabled/
+COPY sites/*.conf /etc/lighttpd/conf-enabled/ 
 
 RUN mkdir -p /run/lighttpd/
 RUN chown www-data. /run/lighttpd/
 
 EXPOSE 80 443
-VOLUME /var/www
-
+VOLUME /var/www/test.local
+                    
 CMD php-fpm -D && lighttpd -D -f /etc/lighttpd/lighttpd.conf

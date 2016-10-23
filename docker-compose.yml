@@ -36,9 +36,7 @@ services:
         volumes_from:
             - volumes_source
         volumes:
-            - ./logs/php-fpm/:/var/log 
-        expose: 
-            - "9000"
+            - ./logs/php-fpm/:/var/log
         links:
             - workspace             
         extra_hosts:
@@ -290,9 +288,11 @@ services:
         ports:
             - "80:80"
             - "443:443"
+        extra_hosts:
+            # IMPORTANT: Replace with your Docker Host IP (will be appended to /etc/hosts)
+            - "dockerhost:192.168.1.4"     
         links:
             - php-fpm
-        tty: true           
 
 ### MySQL Lighttpd Container #########################################
 
