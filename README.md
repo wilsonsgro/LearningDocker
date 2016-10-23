@@ -1,3 +1,10 @@
+START PROJECT:
+master : docker-compose up -d nginx
+lighttpd : docker-compose up -d lighttpd
+lighttpdwithalpine : docker-compose up -d 
+
+GENERAL COMMANDS 
+
 docker-compose up -d nginx mysql
 
 docker exec -it test\_php-fpm\_1 /bin/bash
@@ -57,10 +64,15 @@ COLLATE utf8\_general\_ci;
 WHIRESHARK filter: ip.addr == 127.0.0.1
 
 COMMANDS CONNECT TO CONTAINER OR TO ENTER SHELL ALPINE
+
 RUN /bin/ash FOR Alpine
+
 Options used above:
+
 /bin/ash is Ash (Almquist Shell) provided by BusyBox
+
 --rm Automatically remove the container when it exits (docker run --help)
+
 Use this:
 docker exec -it test\_php-fpm\_1   /bin/ash
 
@@ -73,3 +85,4 @@ Run comand : export TERM=xterm
 LINK IMPORTANT
 https://github.com/matriphe/docker-alpine-php
 https://github.com/matriphe/docker-alpine-nginx/issues/1
+https://github.com/LaraDock/laradock
