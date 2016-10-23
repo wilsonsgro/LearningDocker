@@ -1,0 +1,103 @@
+# Use Alpine Linux
+FROM alpine:latest
+
+# Maintainer
+MAINTAINER Muhammad Zamroni <halo@matriphe.com>
+
+# Environments
+ENV TIMEZONE            Europe/Rome
+ENV PHP_MEMORY_LIMIT    512M
+ENV MAX_UPLOAD          50M
+ENV PHP_MAX_FILE_UPLOAD 200
+ENV PHP_MAX_POST        100M
+
+# Let's roll
+USER  root
+RUN apk update && \
+    apk upgrade && \
+    apk add --update iputils && \
+    apk add --update nmap && \
+    apk add --update iproute2
+RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+    echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \apk update && \
+    apk upgrade && \
+    apk add --update tzdata && \
+    apk add --update bind && \
+    apk add --update bash && \
+    apk add --update wget && \
+    apk add --update curl && \
+    apk add --update nmap && \
+    apk add --update busybox && \
+   
+    apk add --update \
+        php5-mcrypt \
+        php5-soap \
+        php5-openssl \
+        php5-gmp \
+        php5-pdo_odbc \
+        php5-json \
+        php5-dom \
+        php5-pdo \
+        php5-zip \
+        php5-mysql \
+        php5-sqlite3 \
+        php5-apcu \
+        php5-pdo_pgsql \
+        php5-bcmath \
+        php5-gd \
+        php5-xcache \
+        php5-odbc \
+        php5-pdo_mysql \
+        php5-pdo_sqlite \
+        php5-gettext \
+        php5-xmlreader \
+        php5-xmlrpc \
+        php5-bz2 \
+        php5-memcache \
+        php5-mssql \
+        php5-iconv \
+        php5-pdo_dblib \
+        php5-curl \
+        php5-ctype \
+        php5-intl \
+        php5-xdebug@community \
+        php5-fpm && \
+
+    # Set environments
+    sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /etc/php5/php-fpm.conf && \
+    sed -i "s|;*listen\s*=\s*127.0.0.1:9000|listen = 9035|g" /etc/php5/php-fpm.conf && \
+    sed -i "s|;*listen\s*=\s*/||g" /etc/php5/php-fpm.conf && \
+    sed -i "s|;*date.timezone =.*|date.timezone = ${TIMEZONE}|i" /etc/php5/php.ini && \
+    sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /etc/php5/php.ini && \
+    sed -i "s|;*upload_max_filesize =.*|upload_max_filesize = ${MAX_UPLOAD}|i" /etc/php5/php.ini && \
+    sed -i "s|;*max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|i" /etc/php5/php.ini && \
+    sed -i "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST}|i" /etc/php5/php.ini && \
+    sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" /etc/php5/php.ini && \
+
+
+    
+    # Cleaning up
+    mkdir /www && \
+    apk del tzdata && \
+    apk del bind && \
+    apk del bash && \
+    apk del wget && \
+    apk del busybox && \
+    apk del curl && \
+    rm -rf /var/cache/apk/* \
+    rm -f /etc/php5/conf.d/xdebug.ini 
+
+    
+
+#
+#--------------------------------------------------------------------------
+# Final Touch
+#--------------------------------------------------------------------------
+#
+
+ADD ./xdebug.ini /etc/php5/conf.d
+ADD ./xdebug.log/ /var/log
+WORKDIR /var/www
+ENTRYPOINT ["/usr/bin/php-fpm"]
+
+
