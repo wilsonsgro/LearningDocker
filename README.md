@@ -1,7 +1,9 @@
 START PROJECT:
 <br />
 master : docker-compose up -d nginx
+<br />
 lighttpd : docker-compose up -d lighttpd
+<br />
 lighttpdwithalpine : docker-compose up -d 
 <br />
 GENERAL COMMANDS 
