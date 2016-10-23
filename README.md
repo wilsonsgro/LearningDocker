@@ -4,7 +4,7 @@ master : docker-compose up -d nginx
 <br />
 lighttpd : docker-compose up -d lighttpd
 <br />
-lighttpdwithalpine : docker-compose up -d 
+lighttpdwithalpine : docker-compose up -d lighttpd
 <br />
 GENERAL COMMANDS 
 <br />
