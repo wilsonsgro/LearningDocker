@@ -87,6 +87,9 @@ AFTER INTSTAL nano
 Run comand : export TERM=xterm
 
 LINK IMPORTANT
+<br />
 https://github.com/matriphe/docker-alpine-php
+<br />
 https://github.com/matriphe/docker-alpine-nginx/issues/1
+<br />
 https://github.com/LaraDock/laradock
