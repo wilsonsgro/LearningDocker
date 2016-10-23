@@ -32,13 +32,9 @@ services:
     php-fpm:
         build:
             context: ./php-fpm
-            dockerfile: ./alpine/Dockerfile-56
-        volumes_from:
-            - volumes_source
+            dockerfile: ./Dockerfile-56
         volumes:
             - ./logs/php-fpm/:/var/log
-        links:
-            - workspace             
         extra_hosts:
             # IMPORTANT: Replace with your Docker Host IP (will be appended to /etc/hosts)
             - "dockerhost:192.168.1.4"
