@@ -36,7 +36,9 @@ services:
         volumes_from:
             - volumes_source
         volumes:
-            - ./logs/php-fpm/:/var/log
+            - ./logs/php-fpm/:/var/log 
+        expose: 
+            - "9000"
         links:
             - workspace             
         extra_hosts:

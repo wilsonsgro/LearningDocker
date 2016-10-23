@@ -11,6 +11,11 @@ ENV MAX_UPLOAD          50M
 ENV PHP_MAX_FILE_UPLOAD 200
 ENV PHP_MAX_POST        100M
 
+
+RUN set -x \
+    && addgroup -g 1000 -S www-data \
+    && adduser -u 1000 -D -S -G www-data www-data
+
 # Let's roll
 USER  root
 RUN apk update && \
@@ -65,7 +70,7 @@ RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/ap
 
     # Set environments
     sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /etc/php5/php-fpm.conf && \
-    sed -i "s|;*listen\s*=\s*127.0.0.1:9000|listen = 9035|g" /etc/php5/php-fpm.conf && \
+    sed -i "s|;*listen\s*=\s*127.0.0.1:9000|listen = 9000|g" /etc/php5/php-fpm.conf && \
     sed -i "s|;*listen\s*=\s*/||g" /etc/php5/php-fpm.conf && \
     sed -i "s|;*date.timezone =.*|date.timezone = ${TIMEZONE}|i" /etc/php5/php.ini && \
     sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /etc/php5/php.ini && \
@@ -97,7 +102,9 @@ RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/ap
 
 ADD ./xdebug.ini /etc/php5/conf.d
 ADD ./xdebug.log/ /var/log
+ADD ./laravel.pool.conf /etc/php5/fpm.d
 WORKDIR /var/www
+EXPOSE 9000
 ENTRYPOINT ["/usr/bin/php-fpm"]
 
 
