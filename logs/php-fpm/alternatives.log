@@ -1,0 +1,2 @@
+update-alternatives 2016-10-23 14:44:09: run with --install /usr/lib/libblas.so.3 libblas.so.3 /usr/lib/libblas/libblas.so.3 10 --slave /usr/lib/libblas.so.3gf libblas.so.3gf /usr/lib/libblas/libblas.so.3
+update-alternatives 2016-10-23 14:44:09: link group libblas.so.3 updated to point to /usr/lib/libblas/libblas.so.3

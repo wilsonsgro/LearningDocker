@@ -1,0 +1,5 @@
+
+Start-Date: 2016-10-23  14:43:58
+Commandline: apt-get install nmap
+Install: libblas-common:amd64 (1.2.20110419-10, automatic), libpython2.7-stdlib:amd64 (2.7.9-2+deb8u1, automatic), python-minimal:amd64 (2.7.9-1, automatic), libblas3:amd64 (1.2.20110419-10, automatic), libpcap0.8:amd64 (1.6.2-2, automatic), liblinear1:amd64 (1.8+dfsg-4, automatic), python2.7:amd64 (2.7.9-2+deb8u1, automatic), nmap:amd64 (6.47-3+deb8u2), python-lxml:amd64 (3.4.0-1, automatic), python:amd64 (2.7.9-1, automatic), libpython-stdlib:amd64 (2.7.9-1, automatic), libxslt1.1:amd64 (1.1.28-2+deb8u1, automatic), libgfortran3:amd64 (4.9.2-10, automatic), python2.7-minimal:amd64 (2.7.9-2+deb8u1, automatic), liblua5.2-0:amd64 (5.2.3-1.1, automatic), libpython2.7-minimal:amd64 (2.7.9-2+deb8u1, automatic), ndiff:amd64 (6.47-3+deb8u2, automatic)
+End-Date: 2016-10-23  14:44:11
