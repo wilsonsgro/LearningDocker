@@ -17,6 +17,9 @@ ADD lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY sites/*.conf /etc/lighttpd/conf-enabled/ 
 
 RUN mkdir -p /run/lighttpd/
+RUN mkdir -p /etc/lighttpd/conf-available
+RUN mkdir -p /var/cache/lighttpd/compress
+COPY conf-available/*.conf /etc/lighttpd/conf-available/
 RUN chown www-data. /run/lighttpd/
 
 EXPOSE 80 443
